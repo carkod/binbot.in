@@ -1,0 +1,48 @@
+{
+  "version": "2.0.0",
+  "name": "binbot.in",
+  "description": "React version of Holly",
+  "author": "Carlos Wu (https://carlos.wf/)",
+  "homepage": "http://binbot.in",
+  "keywords": [],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/carkod/binbot.in"
+  },
+  "bugs": {
+    "url": "https://github.com/carkod/binbot.in/issues"
+  },
+  "scripts": {
+    "install:clean": "rm -rf node_modules && yarn install",
+    "build": "parcel build",
+    "build:css": "postcss styles/tailwind.css -o src/assets/styles.css",
+    "source": "src/index.html",
+    "start": "parcel"
+  },
+  "dependencies": {
+    "clsx": "^1.2.1",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-router-dom": "^6.3.0",
+    "scrollreveal": "^4.0.9"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "2.6.2",
+    "@tailwindcss/forms": "^0.5.2",
+    "@tailwindcss/typography": "^0.5.2",
+    "autoprefixer": "^10.4.7",
+    "concurrently": "^7.2.1",
+    "eslint": "^8.16.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-react-hooks": "^4.5.0",
+    "parcel": "^2.6.2",
+    "postcss": "^8.4.14",
+    "prettier": "^2.6.2",
+    "prettier-plugin-tailwindcss": "^0.1.11",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.1.5"
+  }
+}
