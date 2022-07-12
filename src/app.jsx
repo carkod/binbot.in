@@ -5,7 +5,7 @@ import { ScrollToTop } from './components/scroll-to-top'
 import Home from './routes/home'
 import About from './routes/about'
 import Contact from './routes/contact'
-import Faqs from './routes/faqs'
+import HowWorksPage from './routes/how-it-works'
 import Support from './routes/support'
 
 export default function App() {
@@ -18,7 +18,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
-          <Route path="faqs" element={<Faqs />} />
+          <Route path="how-it-works" element={<HowWorksPage />} />
           <Route path="support" element={<Support />} />
         </Routes>
       </ScrollToTop>

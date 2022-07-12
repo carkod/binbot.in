@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0",
+  "version": "0.0.1",
   "name": "binbot.in",
   "description": "React version of Holly",
   "author": "Carlos Wu (https://carlos.wf/)",
@@ -16,9 +16,7 @@
   "scripts": {
     "install:clean": "rm -rf node_modules && yarn install",
     "build": "parcel build",
-    "build:css": "postcss styles/tailwind.css -o src/assets/styles.css",
-    "source": "src/index.html",
-    "start": "parcel"
+    "start": "parcel src/index.html"
   },
   "dependencies": {
     "clsx": "^1.2.1",
@@ -32,6 +30,7 @@
     "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/typography": "^0.5.2",
     "autoprefixer": "^10.4.7",
+    "buffer": "^6.0.3",
     "concurrently": "^7.2.1",
     "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.5.0",

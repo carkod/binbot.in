@@ -1,11 +1,11 @@
-import React, { useRef, useEffect } from 'react'
-import ScrollReveal from 'scrollreveal'
+import React, { useRef, useEffect } from "react";
+import ScrollReveal from "scrollreveal";
 
-import { BackgroundGradient } from './background-gradient'
+import { BackgroundGradient } from "./background-gradient";
 
 export function HeroIllustration() {
-  const scrollRevealOneRef = useRef([])
-  const scrollRevealTwoRef = useRef([])
+  const scrollRevealOneRef = useRef([]);
+  const scrollRevealTwoRef = useRef([]);
 
   useEffect(() => {
     if (scrollRevealOneRef.current) {
@@ -13,12 +13,12 @@ export function HeroIllustration() {
         ScrollReveal().reveal(scrollRevealOneRef.current[index], {
           delay: 1000,
           duration: 1400,
-          distance: '40px',
-          easing: 'cubic-bezier(0.5, -0.01, 0, 1.005)',
-          origin: 'bottom',
+          distance: "40px",
+          easing: "cubic-bezier(0.5, -0.01, 0, 1.005)",
+          origin: "bottom",
           interval: 200,
         })
-      )
+      );
     }
 
     if (scrollRevealTwoRef.current) {
@@ -26,23 +26,23 @@ export function HeroIllustration() {
         ScrollReveal().reveal(scrollRevealTwoRef.current[index], {
           delay: 400,
           duration: 600,
-          distance: '40px',
-          easing: 'cubic-bezier(0.5, -0.01, 0, 1.005)',
-          origin: 'right',
+          distance: "40px",
+          easing: "cubic-bezier(0.5, -0.01, 0, 1.005)",
+          origin: "right",
           interval: 150,
         })
-      )
+      );
     }
 
-    return () => ScrollReveal().destroy()
-  }, [])
+    return () => ScrollReveal().destroy();
+  }, []);
 
   return (
-    <div>
+    <div className="absolute">
       <BackgroundGradient className="absolute inset-0 lg:hidden" />
       <div
         ref={(el) => (scrollRevealTwoRef.current[0] = el)}
-        className="absolute top-4 left-16 lg:-top-20 lg:left-24"
+        className="top-4 left-16 lg:-top-20 lg:left-24"
       >
         <svg
           width="124"
@@ -101,12 +101,12 @@ export function HeroIllustration() {
       </div>
       <div
         ref={(el) => (scrollRevealTwoRef.current[2] = el)}
-        className="absolute -top-48 left-96 hidden drop-shadow-2xl lg:block"
+        className="absolute -top-5 left-80 hidden drop-shadow-2xl lg:block"
       >
         <svg
-          width="400"
+          width="500"
           height="400"
-          viewBox="0 0 400 400"
+          viewBox="0 0 -500 400"
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
@@ -171,13 +171,13 @@ export function HeroIllustration() {
       </div>
       <div
         ref={(el) => (scrollRevealTwoRef.current[3] = el)}
-        className="hero-illustration-browser drop-shadow-2xl"
+        className="drop-shadow-2xl"
       >
         <svg
-          className="ml-auto max-w-screen-sm lg:max-w-none"
-          width="800"
+          className="lg:max-w-none"
+          width="600"
           height="450"
-          viewBox="0 0 800 450"
+          viewBox="0 0 600 450"
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
@@ -433,7 +433,7 @@ export function HeroIllustration() {
       <div
         ref={(el) => (scrollRevealOneRef.current[1] = el)}
         className="hero-ball hero-ball-3 absolute drop-shadow-2xl"
-        style={{ top: '402px', left: '440px' }}
+        style={{ top: "402px", left: "440px" }}
       >
         <svg
           width="80"
@@ -599,5 +599,5 @@ export function HeroIllustration() {
         </svg>
       </div>
     </div>
-  )
+  );
 }

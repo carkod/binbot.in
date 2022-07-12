@@ -1,31 +1,35 @@
-import React from 'react'
+import React from "react";
 
-import { Layout } from '../components/layout'
-import { Article, ArticleContent, ArticleMedia } from '../components/article'
+import { ArticleContent, ArticleMedia } from "../components/article";
+import { SplitLayout } from "../components/split-layout";
 
-export default function AboutPage() {
+const About = () => {
   return (
-    <Layout>
-      <Article>
-        <ArticleContent title="About">
-          <p>
-            Holly is a free HTML/CSS landing page designed and developed by
-            @pacovitiello and @DavidePacilio!
-          </p>
-          <p>
-            Holly is suitable for all kind of startups, it's easily
-            customizable, and it's downloadable for personal and commercial use.
-          </p>
-          <p>This template is distributed under the MIT License.</p>
-        </ArticleContent>
+    <ArticleContent title="About Binbot">
+      <h4>
+        Binbot is a cyptocurrency fund, that works like your usual mutual fund.
+      </h4>
+      <div className="article--media relative -right-10 py-10 lg:right-0 lg:w-full lg:py-0">
+        <p className="text-medium-gray">
+          Unlike cryptocurrencies, we wanted to make it simple, highly available
+          to any individual without the fuss of complicated transactions, it's
+          just like a trip to your local branch.
+        </p>
+      </div>
+      
+      <p className="text-medium-gray">
+        Cryptocurrencies are highly volatile, little information is available on
+        most coins or tokens, markets run 24/7 365 days, and therefore, the
+        chances of falling into scams, losing it all, or missing on a sudden
+        hype are very high.
+      </p>
+      <p className="text-medium-gray">
+        We deal with it professionally, we screen the high yield
+        cryptocurrencies using bots and algorithms, using strategies that
+        maintain a low risk profile and maximizing diversification.
+      </p>
+    </ArticleContent>
+  );
+};
 
-        <ArticleMedia>
-          <img
-            src="https://picsum.photos/420/640?grayscale"
-            alt="Lorem Picsum"
-          />
-        </ArticleMedia>
-      </Article>
-    </Layout>
-  )
-}
+export default About;

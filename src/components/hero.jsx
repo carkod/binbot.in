@@ -1,8 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import ScrollReveal from 'scrollreveal'
 
-import { NewsletterForm } from './newsletter-form'
-
 export function Hero({ title, content, illustration }) {
   const scrollRevealRef = useRef([])
 
