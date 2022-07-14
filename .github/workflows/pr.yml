@@ -1,0 +1,62 @@
+name: PR checks
+on: pull_request
+env:
+  ACTIONS_RUNNER_DEBUG: true
+  SECRET_KEY: test
+  ENV: ci
+  FRONTEND_DOMAIN: http://localhost
+  POSTGRES_USER: root
+  POSTGRES_PASSWORD: rootPassXXX
+  POSTGRES_DB: binbot_in_db
+  POSTGRES_HOST_DB: binbot_in_db
+
+jobs:
+  push_to_registry:
+    name: Test and deploy binbot
+    runs-on: ubuntu-latest
+    services:
+      binbot_db:
+        image: postgres:latest
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        env:
+          POSTGRES_USER: ${{ env.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Build Web
+        run: |
+          yarn install
+          yarn run build \
+      - name: Build image
+        run: docker build --tag binbot.in .
+      - name: Test app
+        run: |
+          docker run -d --network host binbot.in && \
+          sleep 5 && \
+          curl --head --fail --retry-delay 5 --retry 3 --retry-connrefused http://localhost
+      - name: Tag image
+        if: ${{ github.actor != 'dependabot[bot]' }}
+        run: |
+          docker commit binbot_api ${{ secrets.DOCKER_USERNAME }}/binbot.in &
+          docker tag binbot.in ${{ secrets.DOCKER_USERNAME }}/binbot.in
+      - name: Push to Docker Hub
+        if: ${{ github.actor != 'dependabot[bot]' }}
+        run: |
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/binbot.in
+
+  staging_deployment:
+    needs: [push_to_registry]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Invoke deployment hook
+        uses: distributhor/workflow-webhook@v2
+        env:
+          webhook_url: ${{ secrets.WEBHOOK_URL }}
+          webhook_secret: ${{ secrets.WEBHOOK_SECRET }}

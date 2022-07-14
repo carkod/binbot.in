@@ -47,9 +47,8 @@ const HowWorks = () => {
     <ArticleContent title="How does it work?">
       <h4>Easiest way to invest in cryptocurrencies.</h4>
       <hr />
-
-      {serviceProcessCardsContent.map((content) => (
-        <ServiceProcessCards data={content} />
+      {serviceProcessCardsContent.map((content, i) => (
+        <ServiceProcessCards key={i} data={content} />
       ))}
     </ArticleContent>
   );

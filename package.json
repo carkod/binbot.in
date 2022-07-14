@@ -15,7 +15,7 @@
   },
   "scripts": {
     "install:clean": "rm -rf node_modules && yarn install",
-    "build": "parcel build",
+    "build": "parcel build src/index.html",
     "start": "parcel src/index.html"
   },
   "dependencies": {
@@ -26,12 +26,9 @@
     "scrollreveal": "^4.0.9"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "2.6.2",
     "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/typography": "^0.5.2",
     "autoprefixer": "^10.4.7",
-    "buffer": "^6.0.3",
-    "concurrently": "^7.2.1",
     "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",

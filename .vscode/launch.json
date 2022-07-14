@@ -1,0 +1,77 @@
+{
+  "version": "0.0.2",
+  "configurations": [
+    {
+      "name": "Python: Flask",
+      "type": "python",
+      "request": "launch",
+      "module": "flask",
+      "console": "internalConsole",
+      "justMyCode": false,
+      "env": {
+        "FLASK_APP": "api/main.py",
+        "FLASK_ENV": "development",
+        "FLASK_DEBUG": "1"
+      },
+      "args": ["run", "--no-reload"],
+      "jinja": true,
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Web",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/web/src",
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${webRoot}/*"
+      },
+      "outFiles": [
+        "${workspaceFolder}/web/**/*.js",
+        "${workspaceFolder}/web/src/node_modules/**"
+      ]
+   },
+    {
+      "name": "Python: Research",
+      "type": "python",
+      "request": "launch",
+      "program": "research/__init__.py",
+      "console": "internalConsole"
+    },
+    {
+      "type": "pwa-chrome",
+      "request": "launch",
+      "name": "React: Web",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/web/src",
+      "preLaunchTask": "startApp",
+      "postDebugTask": "stopApp",
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${webRoot}/*"
+      }
+    },
+    {
+      "name": "Python: Production",
+      "type": "python",
+      "request": "launch",
+      "program": "~/.local/share/virtualenvs/binbot-oJjq0rqg/bin/gunicorn",
+      "gevent": true,
+      "console": "integratedTerminal",
+      "args": [
+        "api.main:app",
+        "--bind=0.0.0.0:8006",
+        "--threads",
+        "12",
+        "-t",
+        "90",
+        "--access-logfile",
+        "- ",
+        "--error-logfile",
+        "- ",
+        "--capture-output",
+        "--log-level",
+        "debug"
+      ],
+      "postDebugTask": "killdebugger"
+    }
+  ]
+}
