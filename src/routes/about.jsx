@@ -1,7 +1,6 @@
 import React from "react";
 
-import { ArticleContent, ArticleMedia } from "../components/article";
-import { SplitLayout } from "../components/split-layout";
+import { ArticleContent } from "../components/article";
 
 const About = () => {
   return (
@@ -16,7 +15,7 @@ const About = () => {
           just like a trip to your local branch.
         </p>
       </div>
-      
+
       <p className="text-medium-gray">
         Cryptocurrencies are highly volatile, little information is available on
         most coins or tokens, markets run 24/7 365 days, and therefore, the

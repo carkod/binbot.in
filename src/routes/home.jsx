@@ -63,9 +63,9 @@ const UserForm = () => {
       return false
     }
 
-    console.log("URL and Key supabase", process.env.REACT_APP_SUPABASE_URL, process.env.REACT_APP_SUPABASE_ANON_PUBLIC_KEY);
+    console.log("key:", process.env.REACT_APP_SUPABASE_ANON_PUBLIC_KEY)
 
-    const supabase = createClient(process.env.REACT_APP_SUPABASE_URL, process.env.REACT_APP_SUPABASE_ANON_PUBLIC_KEY);
+    const supabase = createClient("https://ikdyivgtebggltvjweuw.supabase.co", process.env.REACT_APP_SUPABASE_ANON_PUBLIC_KEY);
     const { data, error } = await supabase
       .from("users")
       .insert([{ name: name, client_type: clientType, email: email }]);
@@ -73,7 +73,8 @@ const UserForm = () => {
     if (error) {
       const msg = handleSupabaseErrors(error)
       setSubmitMessage(`Error submitting details: ${msg}`);
-    } else {
+    }
+    if (data) {
       setSubmitMessage("Successfully submitted your details! We'll be in touch soon!")
     }
     
