@@ -6,9 +6,6 @@
   "homepage": "http://binbot.in",
   "keywords": [],
   "license": "MIT",
-  "targets": {
-    
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/carkod/binbot.in"

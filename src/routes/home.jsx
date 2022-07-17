@@ -62,8 +62,10 @@ const UserForm = () => {
       setSubmitMessage("Invalid email");
       return false
     }
-    console.log("URL and Key supabase", process.env.SUPABASE_URL);
-    const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_PUBLIC_KEY);
+
+    console.log("URL and Key supabase", process.env.REACT_APP_SUPABASE_URL, process.env.REACT_APP_SUPABASE_ANON_PUBLIC_KEY);
+
+    const supabase = createClient(process.env.REACT_APP_SUPABASE_URL, process.env.REACT_APP_SUPABASE_ANON_PUBLIC_KEY);
     const { data, error } = await supabase
       .from("users")
       .insert([{ name: name, client_type: clientType, email: email }]);
