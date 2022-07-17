@@ -1,27 +1,10 @@
 version: "3.7"
 services:
-  db:
-    image: postgres:latest
-    container_name: binbot.in_db
-    restart: on-failure
-    env_file: .env
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB}
-    volumes:
-      - ./postgres_data:/var/lib/postgresql/data
-
   app:
     build: .
     restart: on-failure
     container_name: binbot.in_app
-    depends_on:
-      - db
     env_file:
       - .env
     ports:
-      - 1235:80
-
-volumes:
-  postgres_data:
+      - 8009:80
