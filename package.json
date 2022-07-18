@@ -1,11 +1,8 @@
 {
   "version": "0.0.1",
   "name": "binbot.in",
-  "description": "React version of Holly",
+  "description": "Binbot.investments",
   "author": "Carlos Wu (https://carlos.wf/)",
-  "homepage": "http://binbot.in",
-  "keywords": [],
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/carkod/binbot.in"
@@ -14,9 +11,11 @@
     "url": "https://github.com/carkod/binbot.in/issues"
   },
   "scripts": {
-    "install:clean": "rm -rf node_modules && yarn install",
-    "build": "parcel build src/index.html",
-    "start": "parcel src/index.html"
+    "install:clean": "rm -rf node_modules build && yarn install",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "dependencies": {
     "@supabase/supabase-js": "^1.35.4",
@@ -29,17 +28,37 @@
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/typography": "^0.5.2",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
     "autoprefixer": "^10.4.7",
     "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.5.0",
-    "parcel": "^2.6.2",
-    "postcss": "^8.4.14",
     "prettier": "^2.6.2",
     "prettier-plugin-tailwindcss": "^0.1.11",
-    "process": "^0.11.10",
-    "tailwindcss": "^3.1.5"
+    "tailwindcss": "^3.1.5",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

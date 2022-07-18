@@ -5,45 +5,29 @@ env:
   SECRET_KEY: test
   ENV: ci
   FRONTEND_DOMAIN: http://localhost
-  POSTGRES_USER: root
-  POSTGRES_PASSWORD: rootPassXXX
-  POSTGRES_DB: binbot_in_db
-  POSTGRES_HOST_DB: binbot_in_db
 
 jobs:
   push_to_registry:
-    name: Test and deploy binbot
+    name: Test and deploy binbot.in
     runs-on: ubuntu-latest
-    services:
-      binbot_db:
-        image: postgres:latest
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-        env:
-          POSTGRES_USER: ${{ env.POSTGRES_USER }}
-          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
-
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
-      - name: Build Web
+      - name: Build app
         run: |
           yarn install
-          yarn run build \
+          yarn run build
       - name: Build image
-        run: docker build --tag binbot.in .
+        run: docker build --build-arg REACT_APP_SUPABASE_ANON_PUBLIC_KEY=${{ secrets.REACT_APP_SUPABASE_ANON_PUBLIC_KEY }} --tag binbot.in .
       - name: Test app
         run: |
-          docker run -d --network host binbot.in && \
-          sleep 5 && \
+          docker run -d --network host binbot.in
+          sleep 5
           curl --head --fail --retry-delay 5 --retry 3 --retry-connrefused http://localhost
       - name: Tag image
         if: ${{ github.actor != 'dependabot[bot]' }}
         run: |
-          docker commit binbot_api ${{ secrets.DOCKER_USERNAME }}/binbot.in &
+          docker commit binbot.in ${{ secrets.DOCKER_USERNAME }}/binbot.in &
           docker tag binbot.in ${{ secrets.DOCKER_USERNAME }}/binbot.in
       - name: Push to Docker Hub
         if: ${{ github.actor != 'dependabot[bot]' }}

@@ -5,9 +5,6 @@
 .env.test.local
 /.env
 .vscode/settings.json
-.parcel-cache
-dist/
-postgres_data
 
 # Fix vscode linting bug
 .envFile
@@ -17,7 +14,7 @@ postgres_data
 # REACT APPS
 #
 ##
-
+.DS_Store
 node_modules/
 .dockerenv
 coverage/

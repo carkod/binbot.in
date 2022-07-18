@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ArticleContent, ArticleMedia } from "../components/article";
+import { ArticleContent } from "../components/article";
 import { SplitLayout } from "../components/split-layout";
 import About from "./about";
 
@@ -29,7 +29,7 @@ const serviceProcessCardsContent = [
 
 const ServiceProcessCards = ({ data }) => {
   return (
-    <div className="hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 flex flex-col items-center rounded-lg border bg-white shadow-md md:max-w-xl md:flex-row my-12">
+    <div className="hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 my-12 flex flex-col items-center rounded-lg border bg-white shadow-md md:max-w-xl md:flex-row">
       <div className="h-96 w-full rounded-t-lg object-cover p-5 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg">
         <i className={data.iconClasses} />
       </div>
