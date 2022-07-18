@@ -11,13 +11,11 @@ const About = () => {
       <h4>
         Binbot is a cyptocurrency fund, that works like your usual mutual fund.
       </h4>
-      <div className="article--media relative -right-10 py-10 lg:right-0 lg:w-full lg:py-0">
-        <p className="text-medium-gray">
-          Unlike cryptocurrencies, we wanted to make it simple, highly available
-          to any individual without the fuss of complicated transactions, it's
-          just like a trip to your local branch.
-        </p>
-      </div>
+      <p className="text-medium-gray">
+        Unlike cryptocurrencies, we wanted to make it simple, highly available
+        to any individual without the fuss of complicated transactions, it's
+        just like a trip to your local branch.
+      </p>
 
       <p className="text-medium-gray">
         Cryptocurrencies are highly volatile, little information is available on

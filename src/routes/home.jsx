@@ -8,7 +8,7 @@ export default function HomePage() {
   const [signupForm, setSignupForm] = React.useState(false);
 
   return (
-    <div className="overflow-hidden">
+    <div className={signupForm ? "" : "overflow-hidden"}>
       <SplitLayout
         left={<Landing setSignupForm={(value) => setSignupForm(value)} />}
         right={signupForm ? <UserForm /> : <HeroIllustration />}

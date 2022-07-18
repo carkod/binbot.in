@@ -1,7 +1,7 @@
 const ServiceProcessCards = ({ data }) => {
   return (
-    <div className="hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 my-12 flex flex-col items-center rounded-lg border bg-white shadow-md md:max-w-xl md:flex-row">
-      <div className="h-96 w-full rounded-t-lg object-cover p-5 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg">
+    <div className="hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 my-12 flex flex-col items-center rounded-lg border bg-white shadow-md md:flex-row">
+      <div className="rounded-t-lg object-cover p-5 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg">
         <i className={data.iconClasses} />
       </div>
       <div className="flex flex-col justify-between p-4 leading-normal">

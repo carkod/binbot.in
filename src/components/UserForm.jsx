@@ -1,5 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { handleSupabaseErrors, validateEmail } from "../utils";
 
 const UserForm = () => {
@@ -9,6 +9,7 @@ const UserForm = () => {
     clientType: "Personal",
     email: null,
   });
+  const signupFormRef = useRef(null)
 
   const handleChange = (e) => {
     setUserDetails({ ...userDetails, [e.target.name]: e.target.value });
@@ -42,7 +43,7 @@ const UserForm = () => {
   return (
     <>
       <div className="py-12">
-        <h2 className="inline text-2xl font-bold">
+        <h2 id="signup-form" ref={signupFormRef} className="inline text-2xl font-bold">
           Sign up to see how you can earn 14 APY*
         </h2>
       </div>
