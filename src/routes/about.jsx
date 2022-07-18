@@ -1,8 +1,11 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import ReactGA from "react-ga4";
 import { ArticleContent } from "../components/article";
 
 const About = () => {
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname });
+  }, []);
   return (
     <ArticleContent title="About Binbot">
       <h4>

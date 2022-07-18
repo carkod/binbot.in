@@ -1,9 +1,12 @@
-import React from 'react'
-
+import React, { useEffect } from 'react'
 import { Layout } from '../components/layout'
 import { Article, ArticleContent, ArticleMedia } from '../components/article'
+import ReactGA from "react-ga4";
 
 export default function ContactPage() {
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname });
+  }, []);
   return (
     <Layout>
       <Article>

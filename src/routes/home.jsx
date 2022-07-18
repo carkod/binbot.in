@@ -5,9 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { HeroIllustration } from "../components/hero-illustration";
 import { SplitLayout } from "../components/split-layout";
 import { handleSupabaseErrors, validateEmail } from "../utils";
+import useAnalyticsEventTracker from "../gaEventTracker";
 
 const Landing = ({ setSignupForm }) => {
   let navigate = useNavigate();
+  useAnalyticsEventTracker("Homepage", "access", "Button")
 
   return (
     <div className="bg-white md:py-16">
@@ -62,8 +64,6 @@ const UserForm = () => {
       setSubmitMessage("Invalid email");
       return false
     }
-
-    console.log("key:", process.env.REACT_APP_SUPABASE_ANON_PUBLIC_KEY)
 
     const supabase = createClient("https://ikdyivgtebggltvjweuw.supabase.co", process.env.REACT_APP_SUPABASE_ANON_PUBLIC_KEY);
     const { data, error } = await supabase
