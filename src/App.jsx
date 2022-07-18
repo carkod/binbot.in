@@ -7,12 +7,14 @@ import About from './routes/about'
 import Contact from './routes/contact'
 import HowWorksPage from './routes/how-it-works'
 import Support from './routes/support'
+import ReactGA from "react-ga4";
+
+ReactGA.initialize(process.env.REACT_APP_GA_ID);
+ReactGA.send("pageview");
 
 export default function App() {
-  const basename = import.meta.BASE_URL
-
   return (
-    <BrowserRouter basename={basename}>
+    <BrowserRouter>
       <ScrollToTop>
         <Routes>
           <Route path="/" element={<Home />} />

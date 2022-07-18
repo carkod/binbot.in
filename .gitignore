@@ -3,7 +3,6 @@
 .env.prod
 .env.development.local
 .env.test.local
-/.env
 .vscode/settings.json
 
 # Fix vscode linting bug

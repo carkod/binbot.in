@@ -12,8 +12,8 @@ export function Article({ children }) {
 
 export function ArticleContent({ title, children }) {
   return (
-    <div className="article--content pb-16 pr-20 pt-11 lg:pt-16">
-      <div className="mx-auto w-full max-w-3xl">
+    <div className="md:px-16 md:py-12 lg:px-20 lg:py-16 lg:pt-16">
+      <div className="mx-auto max-w-3xl">
         {title && (
           <header>
             <h1 className="mt-12 mb-3 text-4xl font-bold lg:text-5xl lg:leading-tight">
@@ -22,7 +22,7 @@ export function ArticleContent({ title, children }) {
           </header>
         )}
 
-        <div className="prose mb-8 md:px-16 lg:prose-xl lg:px-0">
+        <div className="prose mb-8 lg:prose-xl lg:px-0">
           {children}
         </div>
       </div>
