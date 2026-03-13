@@ -42,32 +42,34 @@ export function CryptoTicker({ onLoaded }: CryptoTickerProps) {
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const notifiedRef = useRef(false);
 
-  const fetchPrices = async () => {
-    try {
-      const res = await fetch(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${COIN_IDS.join(",")}&order=market_cap_desc&per_page=${COIN_IDS.length}&page=1&sparkline=false&price_change_percentage=24h`,
-        { cache: "no-store" },
-      );
-      if (!res.ok) throw new Error("API error");
-      const data: Coin[] = await res.json();
-      setCoins(data);
-      setError(false);
-      if (!notifiedRef.current && data.length > 0) {
-        notifiedRef.current = true;
-        onLoaded?.();
-      }
-    } catch {
-      setError(true);
-    }
-  };
-
   useEffect(() => {
+    const fetchPrices = async () => {
+      try {
+        const res = await fetch(
+          `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${COIN_IDS.join(
+            ",",
+          )}&order=market_cap_desc&per_page=${COIN_IDS.length}&page=1&sparkline=false&price_change_percentage=24h`,
+        );
+        if (!res.ok) throw new Error("API error");
+        const data: Coin[] = await res.json();
+        setCoins(data);
+        setError(false);
+        if (!notifiedRef.current && data.length > 0) {
+          notifiedRef.current = true;
+          onLoaded?.();
+        }
+      } catch {
+        setError(true);
+      }
+    };
+
     fetchPrices();
     intervalRef.current = setInterval(fetchPrices, 10_000);
+
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, []);
+  }, [onLoaded]); // only onLoaded is external
 
   if (error || coins.length === 0) {
     return null;
