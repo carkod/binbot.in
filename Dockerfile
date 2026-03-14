@@ -1,16 +1,18 @@
-## Build app
-FROM node:latest as build-app
-ARG REACT_APP_SUPABASE_ANON_PUBLIC_KEY
-ADD . .
-RUN REACT_APP_SUPABASE_ANON_PUBLIC_KEY=${REACT_APP_SUPABASE_ANON_PUBLIC_KEY} \
-    yarn install && yarn build
+# ---------- Build ----------
+FROM node:20.19.0 AS builder
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
 
-## Serve prod bundle
-FROM ubuntu:latest
-RUN apt update && apt install -y nginx
-COPY --from=build-app build /usr/share/nginx/html/
-COPY ./nginx.conf /etc/nginx/sites-enabled/default
-RUN rm -rf node_modules .env.local
-CMD ["nginx", "-g", "daemon off;"]
-STOPSIGNAL SIGTERM
-EXPOSE 80
+# ---------- Runtime ----------
+FROM node:20.19.0 AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/public ./public
+EXPOSE 3000
+
+CMD ["node", "server.js"]

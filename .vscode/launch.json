@@ -4,11 +4,14 @@
     {
       "type": "chrome",
       "request": "launch",
-      "name": "React: Web",
+      "name": "React: Binbot.in",
       "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}/web/src",
-      "preLaunchTask": "startApp",
-      "postDebugTask": "stopApp",
+      "webRoot": "${workspaceFolder}/src",
+      "env": {
+        "NODE_ENV": "development",
+        "PORT": "3000",
+        "VITE_PUBLIC_URL": "http://localhost:3000"
+      },
       "sourceMapPathOverrides": {
         "webpack:///src/*": "${webRoot}/*"
       }
