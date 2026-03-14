@@ -8,6 +8,17 @@ import globals from "globals";
 const jsRecommended = js.configs.recommended;
 
 export default [
+  // Node.js/CommonJS for config and mocks
+  {
+    files: ["*.config.js", "__mocks__/*.js"],
+    languageOptions: {
+      globals: { ...globals.node },
+    },
+  },
+  // Ignore .next build output
+  {
+    ignores: [".next/**"],
+  },
   // TypeScript
   {
     files: ["**/*.ts", "**/*.tsx"],
@@ -16,7 +27,6 @@ export default [
       parserOptions: {
         ecmaVersion: "latest",
         sourceType: "module",
-        ecmaFeatures: { jsx: true },
         project: "./tsconfig.json",
       },
       globals: { ...globals.browser },
@@ -43,7 +53,6 @@ export default [
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
-      ecmaFeatures: { jsx: true },
       globals: { ...globals.browser },
     },
     plugins: { react, "react-hooks": reactHooks },

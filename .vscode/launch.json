@@ -5,12 +5,12 @@
       "type": "chrome",
       "request": "launch",
       "name": "React: Binbot.in",
-      "url": "http://localhost:4000",
+      "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}/src",
       "env": {
         "NODE_ENV": "development",
-        "PORT": "4000",
-        "VITE_PUBLIC_URL": "http://localhost:4000"
+        "PORT": "3000",
+        "VITE_PUBLIC_URL": "http://localhost:3000"
       },
       "sourceMapPathOverrides": {
         "webpack:///src/*": "${webRoot}/*"

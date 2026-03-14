@@ -1,15 +1,18 @@
-## Build app
-FROM node:20.19.0 AS build-app
+# ---------- Build ----------
+FROM node:20.19.0 AS builder
 WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci
 COPY . .
-RUN npm install && npm run build
+RUN npm run build
 
-## Serve prod bundle
-FROM ubuntu:latest
-RUN apt update && apt install -y nginx
-COPY --from=build-app /app/dist /usr/share/nginx/html/
-COPY ./nginx.conf /etc/nginx/sites-enabled/default
-RUN rm -rf /app/node_modules /app/.env.local
-CMD ["nginx", "-g", "daemon off;"]
-STOPSIGNAL SIGTERM
-EXPOSE 80 4000
+# ---------- Runtime ----------
+FROM node:20.19.0 AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/public ./public
+EXPOSE 3000
+
+CMD ["node", "server.js"]

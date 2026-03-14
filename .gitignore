@@ -17,7 +17,7 @@
 node_modules/
 .dockerenv
 coverage/
-dist/
+.next/
 
 npm-debug.log*
 yarn-debug.log*

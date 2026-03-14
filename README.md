@@ -16,7 +16,7 @@ Binbot.in is the brochure website for the Binbot customers, built with React, Vi
 
 ### Prerequisites
 
-- Node.js (v22)
+- Node.js (v20). Check the nvmrc file
 - npm
 
 ### Installation
