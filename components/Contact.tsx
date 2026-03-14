@@ -93,14 +93,11 @@ export function Contact() {
             Request Early Access
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-            Binbot is not yet publicly available. Register your interest now and
-            be among the first to gain access when we launch.
+            Binbot is not yet publicly available. Register your interest now and gain private access.
           </p>
         </motion.div>
 
-        {/* Main content: form + image */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 border border-border shadow-sm overflow-hidden">
-          {/* Left: form panel */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -119,7 +116,7 @@ export function Contact() {
                     Investor Relations
                   </h5>
                   <p className="text-xs text-muted-foreground">
-                    allocators@binbot.in
+                    investors@binbot.in
                   </p>
                 </div>
               </div>
@@ -158,7 +155,6 @@ export function Contact() {
                 />
               </div>
 
-              {/* Full Name */}
               <div className="space-y-1.5">
                 <label className="text-xs uppercase tracking-wider text-muted-foreground font-bold">
                   Full Name
@@ -172,7 +168,6 @@ export function Contact() {
                 />
               </div>
 
-              {/* Email */}
               <div className="space-y-1.5">
                 <label className="text-xs uppercase tracking-wider text-muted-foreground font-bold">
                   Email
@@ -186,7 +181,6 @@ export function Contact() {
                 />
               </div>
 
-              {/* Phone */}
               <div className="space-y-1.5">
                 <label className="text-xs uppercase tracking-wider text-muted-foreground font-bold">
                   Phone{" "}
@@ -203,7 +197,6 @@ export function Contact() {
                 />
               </div>
 
-              {/* Organisation */}
               <div className="space-y-1.5">
                 <label className="text-xs uppercase tracking-wider text-muted-foreground font-bold">
                   Organisation{" "}
@@ -219,7 +212,6 @@ export function Contact() {
                 />
               </div>
 
-              {/* Reason */}
               <div className="space-y-1.5">
                 <label className="text-xs uppercase tracking-wider text-muted-foreground font-bold">
                   Reason for Using Binbot
@@ -239,7 +231,6 @@ export function Contact() {
                 </select>
               </div>
 
-              {/* Message */}
               <div className="space-y-1.5">
                 <label className="text-xs uppercase tracking-wider text-muted-foreground font-bold">
                   Message{" "}
@@ -255,7 +246,7 @@ export function Contact() {
                 />
               </div>
 
-              {/* Newsletter subscribe */}
+              {/* Subscribe to updates */}
               <div className="bg-primary/5 border border-primary/20 rounded-sm px-4 py-4">
                 <label className="flex items-start gap-3 cursor-pointer">
                   <input

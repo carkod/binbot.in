@@ -30,7 +30,7 @@ export default function TermsOfService() {
               1. Acceptance of Terms
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              By accessing or using the Binbot website (binbot.fund) operated by
+              By accessing or using the Binbot website (binbot.in) operated by
               BINBOT LTD ("Company", "we", "us", or "our"), you agree to be
               bound by these Terms of Service ("Terms"). If you do not agree to
               these Terms, please do not use this website.
@@ -67,13 +67,13 @@ export default function TermsOfService() {
 
           <section>
             <h2 className="text-xl font-display font-semibold text-foreground mb-3">
-              4. Early Access Registration
+              4. Access Registration
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              Submitting the early access form does not guarantee access to the
+              Submitting the access form does not guarantee access to the
               Binbot platform, create any contractual obligation, or constitute
               any form of investment or subscription agreement. BINBOT LTD
-              reserves the right to grant or deny early access at its sole
+              reserves the right to grant or deny access at its sole
               discretion.
             </p>
           </section>
@@ -166,10 +166,10 @@ export default function TermsOfService() {
               <br />
               Email:{" "}
               <a
-                href="mailto:legal@binbot.fund"
+                href="mailto:legal@binbot.in"
                 className="text-primary underline hover:no-underline"
               >
-                legal@binbot.fund
+                legal@binbot.in
               </a>
             </address>
           </section>
@@ -177,7 +177,7 @@ export default function TermsOfService() {
       </main>
 
       <footer className="border-t border-border py-8 text-center text-xs text-muted-foreground">
-        &copy; 2022–{new Date().getFullYear()} BINBOT LTD. All rights reserved.
+        &copy; 2019–{new Date().getFullYear()} BINBOT LTD. All rights reserved.
       </footer>
     </div>
   );

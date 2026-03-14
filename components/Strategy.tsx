@@ -6,21 +6,21 @@ import { SectionHeader } from "./SectionHeader";
 const strategies = [
   {
     icon: GitMerge,
-    title: "Algorithmic Arbitrage",
+    title: "Algorithmic Trading",
     description:
-      "Price differences for the same asset appear — and vanish — in milliseconds across exchanges. Our systems detect and exploit these gaps automatically, generating returns that are largely uncorrelated to the broader market.",
+      "We analyze thousands of data points every millisecond — price action, order book depth, volatility, and more — to identify optimal entry and exit points. Our algorithms are designed to adapt to changing market conditions, ensuring we capture opportunities while managing risk effectively.",
   },
   {
     icon: Activity,
-    title: "ML Trend Following",
+    title: "Small tokens, Big Opportunities",
     description:
-      "Our machine learning models continuously analyse market momentum and sentiment signals to identify high-probability trends early. Positions are sized dynamically based on confidence level — we press when conditions are right, and step back when they aren't.",
+      "The crypto market is full of hidden gems that can deliver outsized returns. While other funds focus on large-cap coins, we deploy capital across a wide range of assets, including smaller tokens that have strong technical setups and low correlation to Bitcoin. This diversification allows us to capture alpha that others miss.",
   },
   {
     icon: ShieldAlert,
-    title: "Risk-Managed Long/Short",
+    title: "Risk-Managed",
     description:
-      "We profit in both rising and falling markets. By holding long positions in assets we expect to gain, and short positions in those we expect to decline, we reduce directional risk while maintaining consistent exposure to alpha opportunities.",
+      "We profit in both rising and falling markets. By holding long positions and short positions in multiple markets, we reduce directional risk while maintaining consistent exposure to alpha opportunities.",
   },
 ];
 

@@ -3,13 +3,13 @@ import { motion } from "framer-motion";
 
 const stats = [
   {
-    label: "Assets Under Management",
-    value: "$420M+",
-    detail: "Institutional Capital",
+    label: "Assets",
+    value: "1487+",
+    detail: "being monitored in real time",
   },
-  { label: "Annualized Returns", value: "34.7%", detail: "Since Inception" },
+  { label: "Daily Returns", value: "2.6%", detail: "Since Inception" },
   { label: "Sharpe Ratio", value: "2.1", detail: "Risk-Adjusted Alpha" },
-  { label: "Years Active", value: "7+", detail: "Market Cycles Navigated" },
+  { label: "Years Active", value: "7+", detail: "Investing only in Cryptocurrency markets" },
 ];
 
 export function Stats() {

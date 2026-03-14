@@ -40,7 +40,7 @@ export function Features() {
         <SectionHeader
           subtitle="The Edge"
           title="Why Binbot"
-          description="We built Binbot from the ground up to give everyday investors access to the kind of systematic crypto investing previously reserved for institutions."
+          description="We built Binbot from the ground up to give everyday investors access to quantitative strategies previously reserved for institutions."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 mt-16">
