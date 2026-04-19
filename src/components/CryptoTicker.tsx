@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import { TrendingUp, TrendingDown } from "lucide-react";
 
 interface Coin {
@@ -43,7 +43,7 @@ export function CryptoTicker({ onLoaded }: CryptoTickerProps) {
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const notifiedRef = useRef(false);
 
-  const fetchPrices = async () => {
+  const fetchPrices = useCallback(async () => {
     try {
       const res = await fetch(
         `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${COIN_IDS.join(",")}&order=market_cap_desc&per_page=${COIN_IDS.length}&page=1&sparkline=false&price_change_percentage=24h`,
@@ -60,7 +60,7 @@ export function CryptoTicker({ onLoaded }: CryptoTickerProps) {
     } catch {
       setError(true);
     }
-  };
+  }, [onLoaded]);
 
   useEffect(() => {
     fetchPrices();
@@ -68,7 +68,7 @@ export function CryptoTicker({ onLoaded }: CryptoTickerProps) {
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, []);
+  }, [fetchPrices]);
 
   if (error || coins.length === 0) {
     return null;

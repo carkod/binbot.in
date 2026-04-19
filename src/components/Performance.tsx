@@ -17,6 +17,14 @@ interface ChartPoint {
   value: number;
 }
 
+function toDateKey(value: number | Date): string {
+  const date = new Date(value);
+  const year = date.getFullYear();
+  const month = `${date.getMonth() + 1}`.padStart(2, "0");
+  const day = `${date.getDate()}`.padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
 function buildChartData(bots: Bot[] = []): ChartPoint[] {
   if (!bots.length) return [];
 
@@ -26,7 +34,7 @@ function buildChartData(bots: Bot[] = []): ChartPoint[] {
       bot.deal.closing_timestamp ||
       bot.deal.opening_timestamp ||
       bot.created_at;
-    const date = new Date(closeTs).toISOString().split("T")[0];
+    const date = toDateKey(closeTs);
     const profit = bot.trailing_profit ?? bot.trailling_profit ?? 0;
     profitByDate[date] = (profitByDate[date] ?? 0) + profit;
   });
@@ -46,7 +54,7 @@ function buildChartData(bots: Bot[] = []): ChartPoint[] {
   const cursor = new Date(start);
 
   while (cursor <= end) {
-    const key = cursor.toISOString().split("T")[0];
+    const key = toDateKey(cursor);
     if (profitByDate[key]) {
       cumulative = cumulative * (1 + profitByDate[key] / 100);
     }

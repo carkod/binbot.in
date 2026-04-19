@@ -59,8 +59,7 @@ export function Contact() {
     } catch {
       toast({
         title: "Something went wrong",
-        description:
-          "Please try again or email us at allocators@binbot.in",
+        description: "Please try again or email us at allocators@binbot.in",
         variant: "destructive",
         duration: 7000,
       });
@@ -70,11 +69,13 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-32 bg-background relative overflow-hidden">
+    <section
+      id="contact"
+      className="py-32 bg-background relative overflow-hidden"
+    >
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
         {/* Section intro */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -83,16 +84,20 @@ export function Contact() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-14 text-center"
         >
-          <span className="text-primary font-semibold tracking-widest uppercase text-sm mb-3 block">Inquire</span>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-4">Request Early Access</h2>
+          <span className="text-primary font-semibold tracking-widest uppercase text-sm mb-3 block">
+            Inquire
+          </span>
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-4">
+            Request Early Access
+          </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-            Binbot is not yet publicly available. Register your interest now and be among the first to gain access when we launch.
+            Binbot is not yet publicly available. Register your interest now and
+            be among the first to gain access when we launch.
           </p>
         </motion.div>
 
         {/* Main content: form + image */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 border border-border shadow-sm overflow-hidden">
-
           {/* Left: form panel */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -102,9 +107,15 @@ export function Contact() {
             className="bg-card p-8 sm:p-10"
           >
             <form onSubmit={handleSubmit} className="space-y-5">
-
               {/* Honeypot — hidden from real users, bots will fill it */}
-              <div style={{ position: "absolute", left: "-9999px", top: "-9999px" }} aria-hidden="true">
+              <div
+                style={{
+                  position: "absolute",
+                  left: "-9999px",
+                  top: "-9999px",
+                }}
+                aria-hidden="true"
+              >
                 <input
                   type="text"
                   name="website"
@@ -117,7 +128,9 @@ export function Contact() {
 
               {/* Full Name */}
               <div className="space-y-1.5">
-                <label className="text-xs uppercase tracking-wider text-muted-foreground font-bold">Full Name</label>
+                <label className="text-xs uppercase tracking-wider text-muted-foreground font-bold">
+                  Full Name
+                </label>
                 <input
                   required
                   name="name"
@@ -129,7 +142,9 @@ export function Contact() {
 
               {/* Email */}
               <div className="space-y-1.5">
-                <label className="text-xs uppercase tracking-wider text-muted-foreground font-bold">Email</label>
+                <label className="text-xs uppercase tracking-wider text-muted-foreground font-bold">
+                  Email
+                </label>
                 <input
                   required
                   name="email"
@@ -142,7 +157,10 @@ export function Contact() {
               {/* Phone */}
               <div className="space-y-1.5">
                 <label className="text-xs uppercase tracking-wider text-muted-foreground font-bold">
-                  Phone <span className="normal-case font-normal text-muted-foreground">(optional)</span>
+                  Phone{" "}
+                  <span className="normal-case font-normal text-muted-foreground">
+                    (optional)
+                  </span>
                 </label>
                 <PhoneInput
                   international
@@ -156,7 +174,10 @@ export function Contact() {
               {/* Organisation */}
               <div className="space-y-1.5">
                 <label className="text-xs uppercase tracking-wider text-muted-foreground font-bold">
-                  Organisation <span className="normal-case font-normal text-muted-foreground">(optional)</span>
+                  Organisation{" "}
+                  <span className="normal-case font-normal text-muted-foreground">
+                    (optional)
+                  </span>
                 </label>
                 <input
                   name="organisation"
@@ -168,14 +189,18 @@ export function Contact() {
 
               {/* Reason */}
               <div className="space-y-1.5">
-                <label className="text-xs uppercase tracking-wider text-muted-foreground font-bold">Reason for Using Binbot</label>
+                <label className="text-xs uppercase tracking-wider text-muted-foreground font-bold">
+                  Reason for Using Binbot
+                </label>
                 <select
                   required
                   name="reason"
                   defaultValue=""
                   className="w-full bg-background border border-border px-4 py-3 text-foreground text-sm focus:outline-none focus:border-primary transition-colors appearance-none cursor-pointer"
                 >
-                  <option value="" disabled>Select a reason…</option>
+                  <option value="" disabled>
+                    Select a reason…
+                  </option>
                   <option value="retail">Retail</option>
                   <option value="institutional">Institutional</option>
                   <option value="other">Other</option>
@@ -185,7 +210,10 @@ export function Contact() {
               {/* Message */}
               <div className="space-y-1.5">
                 <label className="text-xs uppercase tracking-wider text-muted-foreground font-bold">
-                  Message <span className="normal-case font-normal text-muted-foreground">(optional)</span>
+                  Message{" "}
+                  <span className="normal-case font-normal text-muted-foreground">
+                    (optional)
+                  </span>
                 </label>
                 <textarea
                   name="message"
@@ -205,9 +233,12 @@ export function Contact() {
                     onChange={(e) => setSubscribeUpdates(e.target.checked)}
                   />
                   <div>
-                    <span className="text-sm font-semibold text-foreground block mb-0.5">Stay in the loop</span>
+                    <span className="text-sm font-semibold text-foreground block mb-0.5">
+                      Stay in the loop
+                    </span>
                     <span className="text-xs text-muted-foreground leading-relaxed">
-                      We will only email you when Binbot launches or when there is something truly important to share.
+                      We will only email you when Binbot launches or when there
+                      is something truly important to share.
                     </span>
                   </div>
                 </label>
@@ -220,13 +251,25 @@ export function Contact() {
                 className="w-full group flex items-center justify-center gap-2 px-8 py-4 bg-[#f96332] text-white font-semibold uppercase tracking-wider text-sm rounded-none transition-all duration-300 hover:bg-[#e05427] disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? "Processing…" : "Request Early Access"}
-                {!isSubmitting && <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />}
+                {!isSubmitting && (
+                  <ArrowRight
+                    size={16}
+                    className="group-hover:translate-x-1 transition-transform"
+                  />
+                )}
               </button>
 
               <p className="text-[11px] text-muted-foreground leading-relaxed text-center">
                 By submitting you agree to our{" "}
-                <a href="/privacy" target="_blank" className="text-primary underline hover:no-underline">Privacy Policy</a>.
-                {" "}Your data will be processed by BINBOT LTD solely to manage this enquiry and early access registration.
+                <a
+                  href="/privacy"
+                  target="_blank"
+                  className="text-primary underline hover:no-underline"
+                >
+                  Privacy Policy
+                </a>
+                . Your data will be processed by BINBOT LTD solely to manage
+                this enquiry and early access registration.
               </p>
             </form>
           </motion.div>
@@ -249,15 +292,17 @@ export function Contact() {
             {/* Decorative text overlay */}
             <div className="absolute inset-0 flex flex-col justify-end p-10">
               <p className="text-white/80 font-display text-3xl font-bold leading-tight mb-3">
-                A $3.5 trillion market,<br />working for you.
+                A $3.5 trillion market,
+                <br />
+                working for you.
               </p>
               <p className="text-white/50 text-sm leading-relaxed max-w-xs">
-                24/7 algorithmic trading across the most liquid digital asset pairs in the world.
+                24/7 algorithmic trading across the most liquid digital asset
+                pairs in the world.
               </p>
             </div>
           </motion.div>
         </div>
-
       </div>
     </section>
   );
