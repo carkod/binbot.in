@@ -4,7 +4,10 @@ import { SectionHeader } from "./SectionHeader";
 import type { Bot } from "@/lib/bots";
 
 function formatPair(pair: string, quoteAsset: string): string {
-  const base = pair.replace("USDTM", "").replace("USDCM", "").replace("BUSDM", "");
+  const base = pair
+    .replace("USDTM", "")
+    .replace("USDCM", "")
+    .replace("BUSDM", "");
   return `${base}/${quoteAsset}`;
 }
 
@@ -56,7 +59,11 @@ export function Portfolio({ bots = [] }: { bots?: Bot[] }) {
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.1,
+                  ease: "easeOut",
+                }}
                 className="bg-card border border-border shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 overflow-hidden"
               >
                 <div className="px-5 py-5">
@@ -90,7 +97,9 @@ export function Portfolio({ bots = [] }: { bots?: Bot[] }) {
                   <div className="mt-4 border-t border-border pt-4 space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">Strategy</span>
-                      <span className={`font-medium ${isLong ? "text-[#6bd098]" : "text-[#51cbce]"}`}>
+                      <span
+                        className={`font-medium ${isLong ? "text-[#6bd098]" : "text-[#51cbce]"}`}
+                      >
                         {strategyLabel}
                       </span>
                     </div>
@@ -102,12 +111,16 @@ export function Portfolio({ bots = [] }: { bots?: Bot[] }) {
                     </div>
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">Stop loss</span>
-                      <span className="text-foreground font-medium">{bot.stop_loss}%</span>
+                      <span className="text-foreground font-medium">
+                        {bot.stop_loss}%
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">Opened</span>
                       <span className="text-foreground font-medium text-xs">
-                        {formatDate(bot.deal.opening_timestamp || bot.created_at)}
+                        {formatDate(
+                          bot.deal.opening_timestamp || bot.created_at,
+                        )}
                       </span>
                     </div>
                   </div>

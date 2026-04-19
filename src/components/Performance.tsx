@@ -23,13 +23,17 @@ function buildChartData(bots: Bot[] = []): ChartPoint[] {
   const profitByDate: Record<string, number> = {};
   bots.forEach((bot) => {
     const closeTs =
-      bot.deal.closing_timestamp || bot.deal.opening_timestamp || bot.created_at;
+      bot.deal.closing_timestamp ||
+      bot.deal.opening_timestamp ||
+      bot.created_at;
     const date = new Date(closeTs).toISOString().split("T")[0];
     const profit = bot.trailing_profit ?? bot.trailling_profit ?? 0;
     profitByDate[date] = (profitByDate[date] ?? 0) + profit;
   });
 
-  const allTs = bots.map((b) => b.deal.opening_timestamp || b.created_at).filter(Boolean);
+  const allTs = bots
+    .map((b) => b.deal.opening_timestamp || b.created_at)
+    .filter(Boolean);
   if (!allTs.length) return [];
 
   const start = new Date(Math.min(...allTs));
@@ -47,7 +51,10 @@ function buildChartData(bots: Bot[] = []): ChartPoint[] {
       cumulative = cumulative * (1 + profitByDate[key] / 100);
     }
     points.push({
-      date: cursor.toLocaleDateString("en-GB", { day: "numeric", month: "short" }),
+      date: cursor.toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "short",
+      }),
       value: Math.round(cumulative * 100) / 100,
     });
     cursor.setDate(cursor.getDate() + 1);
@@ -113,7 +120,11 @@ export function Performance({ bots = [] }: { bots?: Bot[] }) {
                       <stop offset="95%" stopColor="#51cbce" stopOpacity={0} />
                     </linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e3e3e3" vertical={false} />
+                  <CartesianGrid
+                    strokeDasharray="3 3"
+                    stroke="#e3e3e3"
+                    vertical={false}
+                  />
                   <XAxis
                     dataKey="date"
                     stroke="#a49e93"

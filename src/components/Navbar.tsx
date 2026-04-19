@@ -48,22 +48,22 @@ export function Navbar() {
             href="/"
             title="Binbot Investments"
             onClick={() => trackNavClick("Logo", "/")}
-            className="flex items-center gap-3"
+            className="flex items-center gap-2 lg:gap-3 shrink-0"
           >
-            <FaWaveSquare className="w-8 h-8 text-primary" style={{ fontSize: "2rem" }} />
-            <span className="font-display font-bold text-2xl tracking-wider text-foreground">
+            <FaWaveSquare className="w-6 h-6 lg:w-8 lg:h-8 text-primary" />
+            <span className="font-display font-bold text-xl lg:text-2xl tracking-wider text-foreground">
               BINBOT
             </span>
           </a>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-4 lg:gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={resolveHref(link.href)}
                 onClick={() => trackNavClick(link.name, link.href)}
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors uppercase tracking-widest"
+                className="text-xs lg:text-sm font-medium text-foreground hover:text-primary transition-colors uppercase tracking-wide lg:tracking-widest whitespace-nowrap"
               >
                 {link.name}
               </a>
@@ -71,7 +71,7 @@ export function Navbar() {
             <a
               href={resolveHref("#contact")}
               onClick={() => trackCTA("Early Access", "navbar")}
-              className="px-6 py-2.5 bg-[#f96332] text-white font-semibold uppercase tracking-wider text-sm rounded-none border border-[#f96332] hover:bg-transparent hover:text-[#f96332] transition-all duration-300"
+              className="px-3 py-2 lg:px-6 lg:py-2.5 bg-[#f96332] text-white font-semibold uppercase tracking-wide lg:tracking-wider text-xs lg:text-sm rounded-none border border-[#f96332] hover:bg-transparent hover:text-[#f96332] transition-all duration-300 whitespace-nowrap shrink-0"
             >
               Early Access
             </a>

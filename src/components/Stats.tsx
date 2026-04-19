@@ -5,12 +5,19 @@ const stats = [
   { label: "Assets", value: "1487+", detail: "Being monitored in real time" },
   { label: "Daily Returns", value: "2.6%", detail: "Since Inception" },
   { label: "Sharpe Ratio", value: "2.1", detail: "Risk-Adjusted Alpha" },
-  { label: "Years Active", value: "7+", detail: "Investing only in Cryptocurrency markets" },
+  {
+    label: "Years Active",
+    value: "7+",
+    detail: "Investing only in Cryptocurrency markets",
+  },
 ];
 
 export function Stats() {
   return (
-    <section id="about" className="py-24 bg-card border-y border-border relative z-10">
+    <section
+      id="about"
+      className="py-24 bg-card border-y border-border relative z-10"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 divide-y md:divide-y-0 md:divide-x divide-border">
           {stats.map((stat, index) => (

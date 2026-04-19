@@ -3,7 +3,8 @@ import TermsOfService from "@/views/TermsOfService";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "Read the BINBOT LTD Terms of Service governing use of the Binbot website and early access registration.",
+  description:
+    "Read the BINBOT LTD Terms of Service governing use of the Binbot website and early access registration.",
   alternates: { canonical: "/terms" },
   robots: { index: true, follow: false },
 };

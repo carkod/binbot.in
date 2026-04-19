@@ -1,6 +1,13 @@
 "use client";
 import { motion } from "framer-motion";
-import { LogIn, Wallet, TrendingUp, Banknote, AlertTriangle, BadgeCheck } from "lucide-react";
+import {
+  LogIn,
+  Wallet,
+  TrendingUp,
+  Banknote,
+  AlertTriangle,
+  BadgeCheck,
+} from "lucide-react";
 
 const steps = [
   {
@@ -106,13 +113,7 @@ function VerticalArrow({ delay }: { delay: number }) {
   );
 }
 
-function StepNode({
-  step,
-  index,
-}: {
-  step: (typeof steps)[0];
-  index: number;
-}) {
+function StepNode({ step, index }: { step: (typeof steps)[0]; index: number }) {
   const Icon = step.icon;
   return (
     <motion.div
@@ -130,7 +131,10 @@ function StepNode({
       {/* Icon */}
       <div
         className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 mt-2"
-        style={{ backgroundColor: `${step.color}18`, border: `1.5px solid ${step.color}40` }}
+        style={{
+          backgroundColor: `${step.color}18`,
+          border: `1.5px solid ${step.color}40`,
+        }}
       >
         <Icon className="w-6 h-6" style={{ color: step.color }} />
       </div>
@@ -151,7 +155,6 @@ export function HowItWorks() {
     <section className="bg-card border-y border-border">
       <div className="py-28">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -167,14 +170,18 @@ export function HowItWorks() {
               How It Works
             </h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-              Go from sign-up to earning in four steps — no trading experience required.
+              Go from sign-up to earning in four steps — no trading experience
+              required.
             </p>
           </motion.div>
 
           {/* Flowchart — desktop: row, mobile: column */}
           <div className="flex flex-col lg:flex-row items-center lg:items-stretch justify-center gap-0">
             {steps.map((step, i) => (
-              <div key={step.number} className="flex flex-col lg:flex-row items-center w-full lg:w-auto">
+              <div
+                key={step.number}
+                className="flex flex-col lg:flex-row items-center w-full lg:w-auto"
+              >
                 <StepNode step={step} index={i} />
                 {i < steps.length - 1 && (
                   <>

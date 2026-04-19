@@ -7,7 +7,8 @@ import { Footer } from "@/components/Footer";
 
 const faqs = [
   {
-    question: "Why doesn't Binbot invest in larger cryptos like Bitcoin or Ethereum?",
+    question:
+      "Why doesn't Binbot invest in larger cryptos like Bitcoin or Ethereum?",
     answer: `With a focused pool of capital, we deliberately target small-cap assets rather than the major coins — and that's a strategic choice, not a limitation.
 
 Small-caps are significantly more volatile than Bitcoin or Ethereum, which means they carry more risk but also far greater upside potential. Our edge lies in identifying and systematically managing that risk: we cap our losses early with a defensive exit strategy, and we let our winners run. In that environment, smaller position sizes can generate outsized returns in ways that large-cap trading simply cannot.
@@ -32,13 +33,7 @@ At Binbot, our bots are judged by how they perform relative to market movements,
   },
 ];
 
-function FAQItem({
-  faq,
-  index,
-}: {
-  faq: (typeof faqs)[0];
-  index: number;
-}) {
+function FAQItem({ faq, index }: { faq: (typeof faqs)[0]; index: number }) {
   const [open, setOpen] = useState(true);
 
   return (
@@ -121,7 +116,8 @@ export default function FAQ() {
             transition={{ duration: 0.5, delay: 0.15 }}
             className="text-muted-foreground text-lg max-w-2xl mx-auto"
           >
-            Honest answers to the questions serious investors ask before committing capital.
+            Honest answers to the questions serious investors ask before
+            committing capital.
           </motion.p>
         </div>
       </div>
@@ -146,7 +142,8 @@ export default function FAQ() {
             Still have questions?
           </h2>
           <p className="text-muted-foreground text-sm mb-6">
-            We&apos;re happy to discuss your specific situation. Reach out and someone from the team will respond personally.
+            We&apos;re happy to discuss your specific situation. Reach out and
+            someone from the team will respond personally.
           </p>
           <a
             href="mailto:allocators@binbot.in"
