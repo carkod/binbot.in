@@ -2,7 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  allowedDevOrigins: ["*.replit.dev", "*.repl.co", "*.worf.replit.dev"],
+  allowedDevOrigins: ["*.binbot.in"],
+  output: "standalone",
 };
 
 export default nextConfig;

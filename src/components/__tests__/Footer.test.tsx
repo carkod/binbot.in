@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Footer } from "../Footer";
 import { trackLinkClick } from "@/lib/analytics";
 
@@ -27,10 +28,12 @@ describe("Footer", () => {
     ).toBeInTheDocument();
   });
 
-  it("tracks footer link clicks", () => {
+  it("tracks footer link clicks", async () => {
+    const user = userEvent.setup();
+
     render(<Footer />);
 
-    fireEvent.click(screen.getByRole("link", { name: /privacy policy/i }));
+    await user.click(screen.getByRole("link", { name: /privacy policy/i }));
 
     expect(trackLinkClick).toHaveBeenCalledWith("Privacy Policy", "/privacy");
   });

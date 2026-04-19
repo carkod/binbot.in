@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Hero } from "../Hero";
 import { trackCTA } from "@/lib/analytics";
 
@@ -11,7 +12,9 @@ describe("Hero", () => {
     jest.clearAllMocks();
   });
 
-  it("renders the main hero message and tracks CTA clicks", () => {
+  it("renders the main hero message and tracks CTA clicks", async () => {
+    const user = userEvent.setup();
+
     render(<Hero />);
 
     expect(
@@ -21,8 +24,8 @@ describe("Hero", () => {
       }),
     ).toBeInTheDocument();
 
-    fireEvent.click(screen.getByRole("link", { name: /schedule a call/i }));
-    fireEvent.click(screen.getByRole("link", { name: /view strategy/i }));
+    await user.click(screen.getByRole("link", { name: /schedule a call/i }));
+    await user.click(screen.getByRole("link", { name: /view strategy/i }));
 
     expect(trackCTA).toHaveBeenCalledWith("Schedule a Call", "hero");
     expect(trackCTA).toHaveBeenCalledWith("View Strategy", "hero");

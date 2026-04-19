@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Navbar } from "../Navbar";
 import { trackCTA, trackNavClick } from "@/lib/analytics";
 
@@ -46,11 +47,13 @@ describe("Navbar", () => {
     );
   });
 
-  it("tracks desktop navigation clicks", () => {
+  it("tracks desktop navigation clicks", async () => {
+    const user = userEvent.setup();
+
     render(<Navbar />);
 
-    fireEvent.click(screen.getByRole("link", { name: /^binbot$/i }));
-    fireEvent.click(screen.getAllByRole("link", { name: /early access/i })[0]);
+    await user.click(screen.getByRole("link", { name: /^binbot$/i }));
+    await user.click(screen.getAllByRole("link", { name: /early access/i })[0]);
 
     expect(trackNavClick).toHaveBeenCalledWith("Logo", "/");
     expect(trackCTA).toHaveBeenCalledWith("Early Access", "navbar");

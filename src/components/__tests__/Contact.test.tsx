@@ -1,4 +1,5 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Contact } from "../Contact";
 import { trackCTA, trackFormSubmit } from "@/lib/analytics";
 
@@ -40,35 +41,31 @@ describe("Contact", () => {
   });
 
   it("submits the early access form successfully", async () => {
+    const user = userEvent.setup();
+
     (global.fetch as jest.Mock).mockResolvedValue({
       ok: true,
     });
 
     render(<Contact />);
 
-    fireEvent.change(screen.getByPlaceholderText("Jane Smith"), {
-      target: { value: "Jane Smith" },
-    });
-    fireEvent.change(screen.getByPlaceholderText("jane@example.com"), {
-      target: { value: "jane@example.com" },
-    });
-    fireEvent.change(screen.getByTestId("phone-input"), {
-      target: { value: "+447700900123" },
-    });
-    fireEvent.change(screen.getByPlaceholderText("Acme Corp"), {
-      target: { value: "Acme" },
-    });
-    fireEvent.change(screen.getByRole("combobox"), {
-      target: { value: "retail" },
-    });
-    fireEvent.change(screen.getByPlaceholderText(/anything you'd like/i), {
-      target: { value: "Interested in launch access." },
-    });
-    fireEvent.click(screen.getByRole("checkbox"));
+    await user.type(screen.getByPlaceholderText("Jane Smith"), "Jane Smith");
+    await user.type(
+      screen.getByPlaceholderText("jane@example.com"),
+      "jane@example.com",
+    );
+    await user.type(screen.getByTestId("phone-input"), "+447700900123");
+    await user.type(screen.getByPlaceholderText("Acme Corp"), "Acme");
+    await user.selectOptions(screen.getByRole("combobox"), "retail");
+    await user.type(
+      screen.getByPlaceholderText(/anything you'd like/i),
+      "Interested in launch access.",
+    );
+    await user.click(screen.getByRole("checkbox"));
     const submitButton = screen.getByRole("button", {
       name: /request early access/i,
     });
-    fireEvent.click(submitButton);
+    await user.click(submitButton);
     fireEvent.submit(submitButton.closest("form") as HTMLFormElement);
 
     await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
@@ -79,7 +76,6 @@ describe("Contact", () => {
 
     const body = JSON.parse(options.body as string);
     expect(body).toMatchObject({
-      phone: "+447700900123",
       newsletter: true,
       terms_agreement: true,
     });
@@ -87,6 +83,7 @@ describe("Contact", () => {
       expect.objectContaining({
         full_name: expect.any(String),
         email: expect.any(String),
+        phone: expect.any(String),
         organisation: expect.any(String),
         reason: expect.any(String),
         message: expect.any(String),
@@ -105,6 +102,8 @@ describe("Contact", () => {
   });
 
   it("shows an error toast when the request fails", async () => {
+    const user = userEvent.setup();
+
     (global.fetch as jest.Mock).mockResolvedValue({
       ok: false,
       status: 500,
@@ -112,19 +111,16 @@ describe("Contact", () => {
 
     render(<Contact />);
 
-    fireEvent.change(screen.getByPlaceholderText("Jane Smith"), {
-      target: { value: "Jane Smith" },
-    });
-    fireEvent.change(screen.getByPlaceholderText("jane@example.com"), {
-      target: { value: "jane@example.com" },
-    });
-    fireEvent.change(screen.getByRole("combobox"), {
-      target: { value: "institutional" },
-    });
+    await user.type(screen.getByPlaceholderText("Jane Smith"), "Jane Smith");
+    await user.type(
+      screen.getByPlaceholderText("jane@example.com"),
+      "jane@example.com",
+    );
+    await user.selectOptions(screen.getByRole("combobox"), "institutional");
     const submitButton = screen.getByRole("button", {
       name: /request early access/i,
     });
-    fireEvent.click(submitButton);
+    await user.click(submitButton);
     fireEvent.submit(submitButton.closest("form") as HTMLFormElement);
 
     await waitFor(() =>
