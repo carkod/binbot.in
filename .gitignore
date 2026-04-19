@@ -18,6 +18,7 @@ node_modules/
 .dockerenv
 coverage/
 .next/
+tsconfig.tsbuildinfo
 
 npm-debug.log*
 yarn-debug.log*

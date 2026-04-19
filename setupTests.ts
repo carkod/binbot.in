@@ -1,5 +1,26 @@
 import "@testing-library/jest-dom";
 
+jest.mock("framer-motion", () => {
+  const React = require("react");
+
+  const createMotionComponent = (tag: string) =>
+    React.forwardRef((allProps: any, ref: any) => {
+      const { children, ...props } = allProps;
+
+      return React.createElement(tag, { ref, ...props }, children);
+    });
+
+  return {
+    AnimatePresence: ({ children }: { children: React.ReactNode }) => children,
+    motion: new Proxy(
+      {},
+      {
+        get: (_target, tag: string) => createMotionComponent(tag),
+      },
+    ),
+  };
+});
+
 // Mock IntersectionObserver
 class MockIntersectionObserver {
   constructor() {}
