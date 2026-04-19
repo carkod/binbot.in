@@ -21,7 +21,9 @@ ENV NEXT_TELEMETRY_DISABLED=1
 ENV PORT=4000
 
 COPY package.json package-lock.json ./
-RUN npm ci --omit=dev --ignore-scripts && npm cache clean --force
+RUN npm ci --omit=dev --ignore-scripts \
+  && npm install --no-save typescript \
+  && npm cache clean --force
 
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public

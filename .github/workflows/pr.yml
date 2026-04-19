@@ -36,13 +36,22 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v6
+      - name: Load app port from .env
+        run: |
+          echo "NEXT_PORT=$(grep '^NEXT_PORT=' .env | cut -d= -f2 | tr -d '\"')" >> "$GITHUB_ENV"
       - name: Build image
         run: docker build --tag binbot.in .
       - name: Test app
         run: |
-          docker run -d -p 3000:3000 --name binbot_in binbot.in
-          sleep 5
-          curl --head --fail --retry-delay 5 --retry 3 --retry-connrefused http://localhost:3000
+          docker run -d -e PORT=${NEXT_PORT} -p ${NEXT_PORT}:${NEXT_PORT} --name binbot_in binbot.in
+          for i in {1..12}; do
+            if curl --head --fail --silent http://localhost:${NEXT_PORT} >/dev/null; then
+              exit 0
+            fi
+            sleep 5
+          done
+          docker logs binbot_in
+          exit 1
       - name: Tag image
         if: ${{ github.actor != 'dependabot[bot]' }}
         run: |
