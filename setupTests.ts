@@ -2,10 +2,25 @@ import "@testing-library/jest-dom";
 
 jest.mock("framer-motion", () => {
   const React = require("react");
+  const motionProps = new Set([
+    "animate",
+    "exit",
+    "initial",
+    "layout",
+    "transition",
+    "variants",
+    "viewport",
+    "whileHover",
+    "whileInView",
+    "whileTap",
+  ]);
 
   const createMotionComponent = (tag: string) =>
     React.forwardRef((allProps: any, ref: any) => {
-      const { children, ...props } = allProps;
+      const { children } = allProps;
+      const props = Object.fromEntries(
+        Object.entries(allProps).filter(([key]) => !motionProps.has(key)),
+      );
 
       return React.createElement(tag, { ref, ...props }, children);
     });
