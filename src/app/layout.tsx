@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Cinzel, Manrope } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
+import { CookieConsentBanner } from "@/components/CookieConsentBanner";
 import "./globals.css";
-import Script from "next/script";
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -17,8 +17,6 @@ const manrope = Manrope({
   variable: "--font-sans",
   display: "swap",
 });
-
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-XXXXXXXXXX";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://binbot.in"),
@@ -114,18 +112,7 @@ export default function RootLayout({
       <body>
         {children}
         <Toaster />
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-          strategy="afterInteractive"
-        />
-        <Script id="ga-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_ID}', { send_page_view: true });
-          `}
-        </Script>
+        <CookieConsentBanner />
       </body>
     </html>
   );
